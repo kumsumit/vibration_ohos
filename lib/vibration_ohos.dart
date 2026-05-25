@@ -1,4 +1,4 @@
-library vibration_ohos;
+library;
 
 import 'dart:convert';
 
@@ -26,7 +26,7 @@ class VibrationOhos extends VibrationPlatform {
   /// }
   /// ```
   @override
-  Future<bool?> hasVibrator() async {
+  Future<bool> hasVibrator() async {
     try {
       final deviceData = await ohosDeviceInfo.ohosDeviceInfo;
 
@@ -50,7 +50,7 @@ class VibrationOhos extends VibrationPlatform {
   /// }
   /// ```
   @override
-  Future<bool?> hasAmplitudeControl() async {
+  Future<bool> hasAmplitudeControl() async {
     try {
       final deviceData = await ohosDeviceInfo.ohosDeviceInfo;
       if (!deviceData.isPhysicalDevice) {
@@ -79,7 +79,7 @@ class VibrationOhos extends VibrationPlatform {
   /// }
   /// ```
   @override
-  Future<bool?> hasCustomVibrationsSupport() async {
+  Future<bool> hasCustomVibrationsSupport() async {
     try {
       return true;
     } on MissingPluginException {
@@ -107,6 +107,7 @@ class VibrationOhos extends VibrationPlatform {
     int repeat = -1,
     List<int> intensities = const [],
     int amplitude = -1,
+    double sharpness = 1.0,
     // ohos only
     VibrateEffect? vibrateEffect,
     // ohos only
